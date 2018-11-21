@@ -1,7 +1,7 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
-
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
@@ -10,10 +10,17 @@
     /* colors */
     --color-alpha-light: MEDIUMSLATEBLUE;
     --color-alpha: SLATEBLUE;
-
+    --color-beta: #FF6565;
+    --color-charlie: #3B86FF;
+    --color-delta: #A3A0FB;
+    --color-echo: #43425D;
+    --color-echo-dark: #3B3A53;
+    --color-neutral-xxx-light: #FFFFFF;
+    --color-neutral-xx-light: #F0F0F7;
     --color-neutral-light: LIGHTSLATEGRAY;
-    --color-neutral: SLATEGRAY;
+    --color-neutral: #A5A4BF;
     --color-neutral-dark: DARKSLATEGRAY;
+
 
     /* Shadows */
 
@@ -21,6 +28,12 @@
 
     /* transitions */
     --transition-alpha: .1s;
+
+    --spacing-base: 5px;
+    --spacing-small: calc(var(--spacing-base) * 2);
+    --spacing-medium: calc(var(--spacing-base) * 6);
+    --spacing-large: calc(var(--spacing-base) * 10);
+
 }
 
 /*------------------------------------*\
@@ -34,9 +47,9 @@
 */
 
 html {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     color: var(--color-neutral-dark);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -224,7 +237,8 @@ input::placeholder {
 .o-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 79.5em; /* 79.5 * 16px = 1272 */
+    max-width: 79.5em;
+    /* 79.5 * 16px = 1272 */
     width: 100%;
 }
 
@@ -294,6 +308,214 @@ input::placeholder {
     ---
     Website main logo
 */
+
+
+.c-app {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: [first] 260px [line1] auto [end];
+    grid-template-rows: [first] 70px [line1] auto [end];
+}
+
+.c-app__logo {
+    background-color: var(--color-echo-dark);
+    grid-column: 1;
+    grid-row: 1;
+    line-height: 20px;
+    font-weight: bold;
+    color: var(--color-neutral-xxx-light);
+    padding: 25px;
+}
+
+.c-app__topbar {
+    background-color: var(--color-neutral-xxx-light);
+    grid-column: 2;
+    grid-row: 1;
+    box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.04);
+    z-index: 10;
+    display: flex;
+}
+
+.c-app__sidebar {
+    background-color: var(--color-echo);
+    grid-column: 1;
+    grid-row: 2;
+    overflow: auto;
+}
+
+.c-app__main {
+    background-color: var(--color-neutral-xx-light);
+    grid-column: 2;
+    grid-row: 2;
+    overflow: auto;
+    padding: var(--spacing-large);
+}
+
+.c-app__main h1 {
+    font-weight: normal;
+}
+
+.c-main-nav ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.c-main-nav__element {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    transition: all 1s;
+}
+
+.c-main-nav svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    fill: var(--color-neutral);
+    margin-left: 15px;
+    transition: all 1s;
+}
+
+.c-main-nav__element:hover {
+    background-color: var(--color-echo-dark);
+    border-left: 5px solid var(--color-delta);
+    transition: all 0.1s;
+}
+
+.c-main-nav__element:hover svg {
+    fill: var(--color-delta);
+    transition: all 0.1s;
+}
+
+.c-main-nav__element .c-main-nav__element-inner a {
+    text-decoration: none;
+    color: var(--color-neutral-xxx-light);
+    line-height: 20px;
+}
+
+.is-selected {
+    background-color: var(--color-echo-dark);
+    border-left: 5px solid var(--color-delta);
+    transition: all 0.1s;
+}
+
+.is-selected svg {
+    fill: var(--color-delta);
+    transition: all 0.1s;
+}
+
+.c-dashboard {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--spacing-medium);
+
+}
+
+.c-dashboard__items {
+    background-color: var(--color-neutral-xxx-light);
+    box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.04);
+    height: calc(var(--spacing-base)*16);
+    grid-column: 1/13;
+    padding: 15px;
+}
+
+.u-dashboard__item-1 {
+    grid-column: 1/13;
+    grid-row: 1;
+}
+
+.u-dashboard__item-2 {
+    grid-column: 1/7;
+    grid-row: 2;
+
+}
+
+.u-dashboard__item-3 {
+    grid-column: 7/13;
+    grid-row: 2;
+}
+
+.u-dashboard__item-4 {
+    grid-column: 1/5;
+    grid-row: 3 / 5;
+    height: calc((var(--spacing-base)* 52) + 5);
+}
+
+.u-dashboard__item-5 {
+    grid-column: 5/13;
+    grid-row: 3;
+    height: calc(var(--spacing-base)*26);
+}
+
+.u-dashboard__item-6 {
+    grid-column: 5/9;
+    grid-row: 4;
+    height: calc(var(--spacing-base)*26);
+}
+
+.u-dashboard__item-7 {
+    grid-column: 9/13;
+    grid-row: 4;
+    height: calc(var(--spacing-base)*26);
+}
+
+.u-dashboard__item-8 {
+    grid-column: 1/5;
+}
+
+.u-dashboard__item-9 {
+    grid-column: 5/13;
+
+}
+
+.c-app__topbar-search {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+}
+
+.c-app__topbar-search svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-neutral);
+    margin-right: 10px;
+}
+
+.c-app__topbar-nav {
+    display: flex;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.c-app__topbar-nav svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-neutral);
+    margin: 0 15px;
+}
+
+
+.c-app__topbar-dropdown {
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+}
+
+.c-app__topbar-dropdown svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-neutral);
+    margin: 0px 10px;
+}
+
+.c-app__topbar-spacer {
+    border-left: 2px solid var(--color-neutral);
+    height: 30px;
+    margin: auto 0px;
+}
 
 /*------------------------------------*\
 #UTILITIES
@@ -437,6 +659,7 @@ No media query since this is the default in mobile first design
 */
 
 @media print {
+
     *,
     *:before,
     *:after {
@@ -447,16 +670,20 @@ No media query since this is the default in mobile first design
         box-shadow: none !important;
         text-shadow: none !important;
     }
+
     a,
     a:visited {
         text-decoration: underline;
     }
+
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: " ("attr(href) ")";
     }
+
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: " ("attr(title) ")";
     }
+
     /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
@@ -465,14 +692,17 @@ No media query since this is the default in mobile first design
     a[href^="javascript:"]:after {
         content: "";
     }
+
     pre {
         white-space: pre-wrap !important;
     }
+
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
+
     /*
     * Printing Tables:
     * http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -480,16 +710,19 @@ No media query since this is the default in mobile first design
     thead {
         display: table-header-group;
     }
+
     tr,
     img {
         page-break-inside: avoid;
     }
+
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
+
     h2,
     h3 {
         page-break-after: avoid;
